@@ -8,3 +8,5 @@
 # variables files, may include sensetive data
 *.tfvars
 terraform.tfvars
+
+*de*
