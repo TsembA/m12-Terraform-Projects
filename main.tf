@@ -10,7 +10,7 @@ variable "env_prefix" {}
 variable "my_ip" {}
 variable "instance_type" {}
 variable "public_key_location" {}
-
+variable "private_key_location" {}
 
 # Create VPC
 resource "aws_vpc" "myapp_vpc" {
@@ -104,22 +104,15 @@ data "aws_ami" "lts_amazon_linux" {
 output "aws_ami_id" {
   value = data.aws_ami.lts_amazon_linux.id
 }
-
 output "ec2_public_ip" {
   value = aws_instance.myapp_server.public_ip
+  
 }
-
-output "ec2_instance_id" {
-  value = aws_instance.myapp_server.id
-}
-
-
 resource "aws_key_pair" "ssh-key" {
-  key_name = "new-server-key"
+  key_name = "tf-server-key"
   public_key = file(var.public_key_location)
   
 }
-
 # Create EC2 Instance
 resource "aws_instance" "myapp_server" {
   ami                    = data.aws_ami.lts_amazon_linux.id
@@ -130,11 +123,26 @@ resource "aws_instance" "myapp_server" {
   associate_public_ip_address = true
   key_name               = aws_key_pair.ssh-key.key_name
 
+  /*user_data = file ("entry-script.sh")
+  user_data_replace_on_change = true*/
 
-  user_data = file("entry-script.sh")
+  connection {
+    type = "ssh"
+    host = self.public_ip
+    user = "ec2-user"
+    private_key = file(var.private_key_location)
+  }
 
-  user_data_replace_on_change = true
-
+  provisioner "file" {
+    source = "entry-script.sh"
+    destination = "/home/ec2-user/entry-script-on-ec2.sh" 
+  }
+  provisioner "remote-exec" {
+    script = "entry-script.sh"    
+  }
+  provisioner "local-exec" {
+    command = "echo ${self.public_ip} > output.txt" 
+  }
   tags = {
     Name = "${var.env_prefix}-server"
   }
