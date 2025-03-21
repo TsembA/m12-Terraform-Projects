@@ -4,6 +4,9 @@ module "eks" {
 
   cluster_name = "myapp-eks-cluster"
   cluster_version = "1.32"
+  cluster_endpoint_public_access = true
+  enable_cluster_creator_admin_permissions = true
+
 
 
   subnet_ids = module.myapp-vpc.private_subnets
