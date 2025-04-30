@@ -1,0 +1,9 @@
+#update config file to get access to to EKS cluster
+aws eks update-kubeconfig --name myapp-eks-cluster --region us-west-1
+
+# Create configmap for pods
+kubectl create configmap nginx-config --from-file=nginx.conf=./nginx.conf
+
+# Run nginx container
+k apply -f nginx-deployment.yaml
+

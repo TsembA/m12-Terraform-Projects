@@ -2,9 +2,9 @@ provider "aws" {
   region = "us-west-1"
 }
 
-variable "vpc_cider_block" {}
-variable "private_subnet_cider_blocks" {}
-variable "public_subnet_cider_blocks" {}
+variable "vpc_cidr_block" {}
+variable "private_subnet_cidr_blocks" {}
+variable "public_subnet_cidr_blocks" {}
 
 # Fetch all available AZs in the region
 data "aws_availability_zones" "available" {}
@@ -18,9 +18,9 @@ module "myapp-vpc" {
   version = "5.19.0"
 
   name            = "myapp-vpc"
-  cidr            = var.vpc_cider_block
-  public_subnets  = var.public_subnet_cider_blocks
-  private_subnets = var.private_subnet_cider_blocks
+  cidr            = var.vpc_cidr_block
+  public_subnets  = var.public_subnet_cidr_blocks
+  private_subnets = var.private_subnet_cidr_blocks
 
   # ✅ Corrected AZs reference
   azs = data.aws_availability_zones.available.names
