@@ -1,4 +1,4 @@
-# 🚀 Terraform AWS EKS Cluster
+# 🚀 Terraform AWS EKS Cluster Project
 
 This project provisions an **Amazon Elastic Kubernetes Service (EKS)** cluster using the [terraform-aws-modules/eks](https://registry.terraform.io/modules/terraform-aws-modules/eks/aws) module. It is configured specifically for a **development environment** and includes a managed node group for running workloads.
 
