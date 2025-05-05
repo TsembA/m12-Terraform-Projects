@@ -1,5 +1,5 @@
 
-# 🚀 AWS Infrastructure with Terraform
+# 🚀 AWS Infrastructure with Terraform project
 
 This project provisions a complete AWS environment using **Terraform**, including networking, security groups, and an EC2 instance configured with a specific AMI. It’s modular, parameterized, and ideal for deploying consistent infrastructure across environments.
 
