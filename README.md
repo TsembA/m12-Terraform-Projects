@@ -1,4 +1,4 @@
-# 📦 Infrastructure as Code with Terraform
+# 📦 Infrastructure as Code with Terraform + Projects
 
 Terraform is a powerful tool for defining, provisioning, and managing infrastructure as code (IaC). It works seamlessly alongside tools like Ansible and is widely adopted for deploying cloud environments in a repeatable and consistent way.
 
