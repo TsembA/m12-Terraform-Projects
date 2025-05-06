@@ -129,4 +129,4 @@ Provisioners allow you to run scripts or commands **after a resource is created*
 
 ## 📚 Summary
 
-Terraform empowers you to automate and scale your infrastructure safely and repeatably. With modular design, state management, and strong provider ecosystem, it's a key tool in any DevOps toolbox. 🧰
+Terraform empowers you to automate and scale your infrastructure safely and repeatably. With modular design, state management, and strong provider ecosystem.
