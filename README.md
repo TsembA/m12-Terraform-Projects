@@ -122,18 +122,4 @@ terraform apply
 └── README.md
 ```
 
----
-
-## 🧹 TODO
-
-- Add security group module
-- Define `terraform.tfvars`
-- Output public IP and DNS
-- Add S3 backend for remote state
-
----
-
-## 🛡️ License
-
-MIT – open for modification and use.
 
