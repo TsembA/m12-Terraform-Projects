@@ -143,7 +143,9 @@ Ensure you have your `entry-script.sh`, public key, and private key ready.
 ```
 
 ❌ 1. Provisioners Break Declarative Paradigm
-Terraform is designed to manage infrastructure as declarative code — describing what the end state should be. Provisioners introduce imperative logic — commands that say how to get there, which breaks that model.
+Terraform is designed to manage infrastructure as declarative code — describing what the end state should be.
+Provisioners introduce imperative logic — commands that say how to get there, which breaks that model.
+
 ❌ 2. Unpredictable Behavior
 Provisioners often depend on:
 SSH connectivity
@@ -155,7 +157,8 @@ Fail
 Partially provision resources
 
 ❌ 3. Difficult Error Handling and Debugging
-Errors from provisioners are not always clear or retryable. Terraform lacks the robust retry/error-handling logic of dedicated config tools like Ansible, Chef, or cloud-init.
+Errors from provisioners are not always clear or retryable.
+Terraform lacks the robust retry/error-handling logic of dedicated config tools like Ansible, Chef, or cloud-init.
 
 ❌ 4. Lifecycle Complexity
 Provisioners run only on resource creation, not on updates. If you change a script or its source file:
@@ -163,6 +166,7 @@ Provisioners run only on resource creation, not on updates. If you change a scri
 Terraform won’t re-run it unless the entire resource is destroyed and recreated.
 This leads to hidden state drift and brittle workflows.
 ❌ 5. Security Risks
-Using private keys directly in Terraform code (as in connection { private_key = file(...) }) exposes sensitive credentials, especially if versioned or shared.
+Using private keys directly in Terraform code (as in connection { private_key = file(...) }) exposes sensitive credentials,
+especially if versioned or shared.
 ```
 ---
