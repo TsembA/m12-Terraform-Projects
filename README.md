@@ -139,22 +139,21 @@ Ensure you have your `entry-script.sh`, public key, and private key ready.
 ```
 
 ---
+```
 ##Using Terraform provisioners (like file, remote-exec, and local-exec) is generally considered bad practice in production for several key reasons:
 
 ❌ 1. Provisioners Break Declarative Paradigm
 Terraform is designed to manage infrastructure as declarative code — describing what the end state should be. Provisioners introduce imperative logic — commands that say how to get there, which breaks that model.
-
 ❌ 2. Unpredictable Behavior
 Provisioners often depend on:
-
 SSH connectivity
 Network stability
 Correct credentials
 If something fails (e.g., network blip, host not yet ready), Terraform can’t always recover gracefully. It may:
-
 Hang
 Fail
 Partially provision resources
+
 ❌ 3. Difficult Error Handling and Debugging
 Errors from provisioners are not always clear or retryable. Terraform lacks the robust retry/error-handling logic of dedicated config tools like Ansible, Chef, or cloud-init.
 
@@ -165,3 +164,5 @@ Terraform won’t re-run it unless the entire resource is destroyed and recreate
 This leads to hidden state drift and brittle workflows.
 ❌ 5. Security Risks
 Using private keys directly in Terraform code (as in connection { private_key = file(...) }) exposes sensitive credentials, especially if versioned or shared.
+```
+---
