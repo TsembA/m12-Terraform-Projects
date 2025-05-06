@@ -139,8 +139,8 @@ Ensure you have your `entry-script.sh`, public key, and private key ready.
 ```
 
 ---
+## Using Terraform provisioners (like file, remote-exec, and local-exec) is generally considered bad practice in production for several key reasons:
 ```
-##Using Terraform provisioners (like file, remote-exec, and local-exec) is generally considered bad practice in production for several key reasons:
 
 ❌ 1. Provisioners Break Declarative Paradigm
 Terraform is designed to manage infrastructure as declarative code — describing what the end state should be. Provisioners introduce imperative logic — commands that say how to get there, which breaks that model.
